@@ -1,4 +1,4 @@
-# Repositório de aulas ao vivo para estudantes da Eletiva Python na Turma 26 🐍
+# Repositório de aulas ao vivo para estudantes da Eletiva Python na Turma 30 🐍
 
 Este repositório armazena os códigos e scripts fornecidos durante as aulas ao vivo pelas pessoas especialistas da Trybe.
 
@@ -7,7 +7,7 @@ Este repositório armazena os códigos e scripts fornecidos durante as aulas ao 
 Basta clonar o repositório 😎
 
 ```
-git clone git@github.com:tryber/python-026-live-lectures.git
+git clone git@github.com:tryber/python-030-live-lectures.git
 ```
 
 ## Estrutura
