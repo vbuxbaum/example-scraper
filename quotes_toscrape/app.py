@@ -1,5 +1,5 @@
 import random
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, BackgroundTasks
 from quotes_toscrape.ai_completion import get_maritalk_analysis
 from quotes_toscrape.entities import StoredQuote, AIAnalysis
 from quotes_toscrape.quotes_scraper import scrape_all_quotes
@@ -8,12 +8,16 @@ from quotes_toscrape.database import QuotesRepository
 app = FastAPI(title="Quotes API")
 
 
-@app.post("/scrape")
-def scrape_and_store_quotes():
+def scrape_and_store_quotes_background():
     all_quotes = scrape_all_quotes()
     QuotesRepository.insert_many(all_quotes)
+
+
+@app.post("/scrape")
+def scrape_and_store_quotes(bg: BackgroundTasks):
+    bg.add_task(scrape_and_store_quotes_background)
     return {
-        "message": f"{len(all_quotes)} quotes scraped and stored successfully"
+        "message": "Quotes being scraped and stored in the background."
     }
 
 

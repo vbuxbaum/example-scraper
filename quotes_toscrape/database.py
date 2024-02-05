@@ -13,7 +13,7 @@ class QuotesRepository:
 
     @classmethod
     def insert_many(cls, quotes: list[Quote]):
-        cls._collection.insert_many(quotes)
+        cls._collection.insert_many([quote.__dict__ for quote in quotes])
 
     @classmethod
     def find_all(cls, query={}) -> list[StoredQuote]:
